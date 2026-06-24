@@ -1,0 +1,20 @@
+name: HardcoreLives
+version: '${version}'
+main: fr.filipe.hardcorelives.HardcoreLives
+api-version: '1.21'
+description: Hardcore lives system with multiple configurable modes
+author: Filipe
+
+commands:
+  lives:
+    description: Affiche le nombre de vies (soi-meme ou un joueur)
+    usage: /lives [joueur]
+  hcl:
+    description: Commandes admin du systeme de vies
+    usage: /hcl <reload|set|give|revive|mode|resetmap>
+    permission: hardcorelives.admin
+
+permissions:
+  hardcorelives.admin:
+    description: Acces aux commandes admin
+    default: op

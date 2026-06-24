@@ -1,0 +1,56 @@
+# ============================================================
+#  HardcoreLives - Configuration
+# ============================================================
+# Apres CHAQUE modification : /hcl reload  (ou redemarrage serveur)
+# ------------------------------------------------------------
+
+# Mode de jeu actif. Valeurs possibles :
+#   LIVES   -> chaque joueur a un nombre de vies fixe (voir starting-lives)
+#   REVIVE  -> comme LIVES, mais un joueur a 0 vie (spectateur) peut etre
+#              reanime par un autre joueur via un objet de reanimation
+#   POTION  -> comme LIVES, mais la "vie" se regagne en craftant et
+#              consommant une Potion de Resurrection
+mode: LIVES
+
+# Nombre de vies au demarrage (1 a 5 recommande)
+starting-lives: 3
+
+# Que se passe-t-il quand un joueur tombe a 0 vie ?
+#   SPECTATOR -> passe en mode spectateur (peut suivre la partie)
+#   BAN       -> banni du serveur jusqu'au prochain reset
+on-death-out: SPECTATOR
+
+# Vies partagees en equipe : si true, toutes les vies sont puisees
+# dans un pool commun a tout le serveur au lieu d'etre individuelles.
+shared-team-lives: false
+# Taille du pool commun si shared-team-lives = true
+team-lives-pool: 10
+
+# ------------------------------------------------------------
+#  Mode REVIVE
+# ------------------------------------------------------------
+revive:
+  # Combien de temps (secondes) un spectateur reste reanimable.
+  # 0 = illimite (reanimable tant que la partie dure)
+  window-seconds: 0
+  # Duree (secondes) du rituel de reanimation : le reanimateur doit
+  # rester immobile a cote du totem/point de reanimation.
+  cast-seconds: 5
+
+# ------------------------------------------------------------
+#  Mode POTION
+# ------------------------------------------------------------
+potion:
+  # Combien de vies rend une potion de resurrection consommee
+  lives-restored: 1
+
+# ------------------------------------------------------------
+#  Messages (couleurs via & : &c rouge, &a vert, &e jaune...)
+# ------------------------------------------------------------
+messages:
+  prefix: "&8[&cHardcore&8] &r"
+  life-lost: "&cTu viens de perdre une vie. Il te reste &e%lives% &cvie(s)."
+  no-lives: "&4Tu as epuise toutes tes vies. Mode spectateur active."
+  revived: "&aTu as ete reanime ! Bienvenue parmi les vivants."
+  revive-start: "&eReanimation en cours... reste immobile %seconds%s."
+  potion-used: "&aPotion de resurrection consommee. +%amount% vie(s)."
